@@ -53,7 +53,6 @@ def Tree_t(a,b,Graph=True):
         Show_graph(a,[Tree_d['tot']], ['Total time'])
         plt.subplot(212)
         Show_graph(a,[Tree_d['init_l']], ['Insertion Time'])
-        plt.show()
 
         plt.figure(2)
         plt.title('Binary Search Tree pt.2')
@@ -79,7 +78,7 @@ def Heap_t(a,b, Graph=True):
         Heap_d['max_l'].append(max_t)
         Heap_d['deleteM_l'].append(deleteM_t)
         Heap_d['insert_l'].append(insert_t)
-        Heap_d['tot'].append(init_t + max_t + deleteM_t)
+        Heap_d['tot'].append(init_t + max_t + deleteM_t + insert_t)
 
     if Graph: #plot only if it is required
         plt.figure(3)
@@ -88,7 +87,6 @@ def Heap_t(a,b, Graph=True):
         Show_graph(a,[Heap_d['tot']],['Total time'])
         plt.subplot(212)
         Show_graph(a,[Heap_d['init_l']],['Element Insertion'])
-        plt.show()
 
         plt.figure(4)
         plt.title('Max Heap pt.2')

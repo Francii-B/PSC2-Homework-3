@@ -32,8 +32,8 @@ def Tree_t(a,b,Graph=True):
     for i in a:
         random_el = random.choice(b[:i]) #use always the same random element
         #measure the time
-        bst = t.BinarySearchTree(b[:i])
-        init_t = timeit.timeit(lambda: t.BinarySearchTree(b[:i]), number=10)/10
+        bst = t.BinarySearchTree()
+        init_t = timeit.timeit(lambda: bst.insertArr(b[:i]), number=10)/10
         max_t= timeit.timeit(lambda: bst.findMax(), number=10)/10
         get_t= timeit.timeit(lambda: bst.get(random_el), number=10)/10
         insert_t = timeit.timeit(lambda: bst.put(random_el), number=10)/10
@@ -69,8 +69,8 @@ def Heap_t(a,b, Graph=True):
     for i in a:
         random_el = random.choice(b[:i]) #generate a random element
         #measure the time
-        mhp = h.MaxBinHeap(b[:i])
-        init_t = timeit.timeit(lambda: h.MaxBinHeap(b[:i]), number=10)/10
+        mhp = h.MaxBinHeap()
+        init_t = timeit.timeit(lambda: mhp.insertArr(b[:i]), number=10)/10
         max_t = timeit.timeit(lambda: mhp.getMax(), number=10)/10
         deleteM_t = timeit.timeit(lambda: mhp.delMax(), number=10)/10
         insert_t = timeit.timeit(lambda: mhp.insert(random_el), number=10)/10

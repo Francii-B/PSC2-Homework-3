@@ -1,9 +1,11 @@
 class MaxBinHeap:
     #Initialization of the heap (insertion of element, if they are present)
-    def __init__(self, arr=[]):
+    def __init__(self):
         self.heapList = [0]
         self.currentSize = 0
-        for i in arr:
+
+    def insertArr(self, array= []):
+        for i in array:
             self.insert(i)
 
     def insert(self, k):

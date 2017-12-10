@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 #a: generate the different lenght of the lists
 #b: generate the largest list. Every smaller list is taken from it
-a = np.logspace(1.0, np.log10(10000, dtype=float), base=10, endpoint=False, dtype=int)
+a = np.logspace(1.0, np.log10(100000, dtype=float), base=10, endpoint=False, dtype=int, num = 15)
 b = random.choices(range(a[-1] + 1), k=a[-1])
 
 

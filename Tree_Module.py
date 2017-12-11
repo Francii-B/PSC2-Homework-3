@@ -98,6 +98,7 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
         self.size = 0
+        self.tree_el=[]
     
     #insertion of all the elements
     def insertArr(self, array= []):
@@ -110,6 +111,7 @@ class BinarySearchTree:
             self._put(key,self.root)
         else:
             self.root = TreeNode(key)
+        self.tree_el.append(key)
         self.size = self.size + 1
 
     #compare the new node with current node in the tree
@@ -197,11 +199,13 @@ class BinarySearchTree:
          if nodeToRemove:
              self.remove(nodeToRemove)
              self.size = self.size-1
+             self.tree_el.remove(key)
          else:
              print('This element is not in the tree')
       elif self.size == 1 and self.root.key == key:
          self.root = None
          self.size = self.size - 1
+        self.tree_el.remove(key)
       else:
           print('This element is not in the tree')
 

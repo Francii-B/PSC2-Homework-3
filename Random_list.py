@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 #a: generate the different lenght of the lists
 #b: generate the largest list. Every smaller list is taken from it
-a = np.logspace(1.0, np.log10(10000, dtype=float), base=10, endpoint=False, dtype=int)
+a = np.logspace(0.5, np.log10(10000, dtype=float), base=10, endpoint=False, dtype=int)
 b = random.choices(range(a[-1] + 1), k=a[-1])
 
 
@@ -70,10 +70,10 @@ def Heap_t(a,b, Graph=True):
         random_el = random.choice(b[:i]) #generate a random element
         #measure the time
         mhp = h.MaxBinHeap()
-        init_t = timeit.timeit(lambda: mhp.insertArr(b[:i]), number=10)/10
-        max_t = timeit.timeit(lambda: mhp.getMax(), number=10)/10
-        deleteM_t = timeit.timeit(lambda: mhp.delMax(), number=10)/10
-        insert_t = timeit.timeit(lambda: mhp.insert(random_el), number=10)/10
+        init_t = (timeit.repeat(lambda: mhp.insertArr(b[:i]), number=1, repeat= 10))[0]
+        max_t = min(timeit.repeat(lambda: mhp.getMax(), number=1, repeat= 20))
+        deleteM_t = min(timeit.repeat(lambda: mhp.delMax(), number=1, repeat= 10))
+        insert_t = min(timeit.repeat(lambda: mhp.insert(random_el), number=1, repeat= 5))
         #record the datas
         Heap_d['init_l'].append(init_t)
         Heap_d['max_l'].append(max_t)
@@ -87,7 +87,7 @@ def Heap_t(a,b, Graph=True):
         plt.title('Max Heap pt.1')
         Show_graph(a,[Heap_d['tot']],['Total time'])
         plt.subplot(212)
-        Show_graph(a,[Heap_d['init_l']],['Element Insertion'])
+        Show_graph(a,[Heap_d['init_l']],['Total Insertion'])
 
         plt.figure(4)
         plt.title('Max Heap pt.2')
@@ -95,18 +95,20 @@ def Heap_t(a,b, Graph=True):
         plt.show()
     return Heap_d
 
-#Comparisons between the Tree and the Heap (total time, insertion of the whole list, insertion of a random element)
+#Comparisons between the Tree and the Heap (total time, insertion of the whole list, insertion of a random element, get max)
 def Comparisons(TD, HD):
     plt.figure(5)
-    plt.subplot(311)
+    plt.subplot(211)
     plt.title('Comparisons between Heap and Tree')
     Show_graph(a, [TD['tot'], HD['tot']],['Tree total time','Heap total time'])
 
-    plt.subplot(312)
+    plt.subplot(212)
     Show_graph(a, [TD['init_l'], HD['init_l']], ['Tree insertion', 'Heap insertion'])
 
-    plt.subplot(313)
-    Show_graph(a, [TD['insert_l'], HD['insert_l']], ['Tree Random insertion', 'Heap Random insertion'])
+    plt.figure()
+    plt.title('Comparisons between Heap and Tree')
+    Show_graph(a, [TD['insert_l'], HD['insert_l'], TD['max_l'], HD['max_l']], 
+               ['Tree Random Insertion', 'Heap Random Insertion', 'Tree Get Max', 'Heap Get Max'])
     plt.show()
 
 #Plot the data when it is required

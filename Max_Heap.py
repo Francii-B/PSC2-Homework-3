@@ -5,6 +5,7 @@ class MaxBinHeap:
         self.currentSize = 0
 
     def insertArr(self, array= []):
+        self.__init__()
         for i in array:
             self.insert(i)
 

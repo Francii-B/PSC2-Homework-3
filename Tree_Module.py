@@ -102,6 +102,7 @@ class BinarySearchTree:
     
     #insertion of all the elements
     def insertArr(self, array= []):
+        self.__init__()
         for i in array:
             self.put(i)
 

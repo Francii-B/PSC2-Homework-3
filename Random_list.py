@@ -67,7 +67,7 @@ def Heap_t(a,b, Graph=True):
         mhp = h.MaxBinHeap()
         init_t = st.median(timeit.repeat(lambda: mhp.insertArr(b[:i]),repeat=10, number=1))
         max_t = st.median(timeit.repeat(lambda: mhp.getMax(),repeat=10, number=1))
-        deleteM_t = st.median(timeit.repeat(lambda: mhp.delMax(),repeat=30, number=1))
+        deleteM_t = st.median(timeit.repeat(lambda: mhp.delMax(),repeat=24, number=1))
         #record the datas
         Heap_d['init_l'].append(init_t)
         Heap_d['max_l'].append(max_t)
@@ -136,4 +136,5 @@ def Questions():
     if True in answ_l:
         plt.show()
 
-Questions()
+if __name__ == '__main__':
+    Questions()

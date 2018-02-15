@@ -206,7 +206,7 @@ class BinarySearchTree:
       elif self.size == 1 and self.root.key == key:
          self.root = None
          self.size = self.size - 1
-        self.tree_el.remove(key)
+         self.tree_el.remove(key)
       else:
           print('This element is not in the tree')
 
